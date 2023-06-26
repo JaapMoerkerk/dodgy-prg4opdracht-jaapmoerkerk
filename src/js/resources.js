@@ -6,7 +6,7 @@ import background1 from '../images/background/clouds_mg_1_big.png'
 import background2 from '../images/background/clouds_mg_2_big.png'
 import background3 from '../images/background/clouds_mg_3_big.png'
 import player from '../images/player/player_spritesheet.png'
-import playerhit from '../images/player/hit_spritesheet.png'
+import playerHit from '../images/player/hit_spritesheet.png'
 import logo from '../images/logo.png'
 import redbird from '../images/enemies/redbird.png'
 import bluebird from '../images/enemies/bluebird.png'
@@ -20,7 +20,7 @@ const Resources = {
     Background1: new ImageSource(background1),
 
     Player: new ImageSource(player),
-    PlayerHit: new ImageSource(playerhit),
+    PlayerHit: new ImageSource(playerHit),
     Redbird: new ImageSource(redbird),
     Bluebird: new ImageSource(bluebird),
     Logo: new ImageSource(logo)

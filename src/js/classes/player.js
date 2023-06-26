@@ -75,7 +75,7 @@ export class Player extends Actor {
             this.graphics.use("hit")
             this.disableJump = true
             Physics.gravity.y = 800
-            setTimeout(this.gameOver, 2000)
+            setTimeout(this.gameOver, 2500)
         }
     }
 

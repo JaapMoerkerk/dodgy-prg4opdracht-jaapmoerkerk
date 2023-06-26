@@ -23,7 +23,7 @@ export class Gameover extends Scene {
         console.log(gameoverText.localCenter)
         gameoverText.pos.x = (Settings.screenWidth/2) - 450
         this.add(gameoverText)
-        setTimeout(this.resetGame, 2000)
+        setTimeout(this.resetGame, 3000)
     }
 
 

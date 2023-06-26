@@ -1,4 +1,4 @@
-import {Scene} from "excalibur";
+import {Color, Font, FontUnit, Label, Scene, Vector} from "excalibur";
 import {Background} from "../classes/background.js";
 import {Player} from "../classes/player.js";
 import {Spawner} from "../classes/spawner.js";
@@ -35,5 +35,6 @@ export class Level1 extends Scene {
 
         const spawner = new Spawner()
         this.add(spawner)
+
     }
 }
