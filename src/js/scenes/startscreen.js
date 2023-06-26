@@ -1,6 +1,7 @@
-import {Input, Scene} from "excalibur";
+import {Input, Physics, Scene, Vector} from "excalibur";
 import {Background} from "../classes/background.js";
 import {Player} from "../classes/player.js";
+import {Settings} from "../settings.js";
 
 export class Startscreen extends Scene {
     game
@@ -10,6 +11,7 @@ export class Startscreen extends Scene {
     }
 
     onInitialize(engine) {
+        Physics.gravity = new Vector(0, Settings.gravityStrength)
         const backgroundSky = new Background("BackgroundSky", 0);
         const backgroundClouds = new Background("BackgroundClouds", 0);
         const backgroundMountains = new Background("BackgroundMountains", 0);

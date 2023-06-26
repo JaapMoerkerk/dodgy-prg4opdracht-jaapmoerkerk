@@ -1,18 +1,6 @@
-import {
-    ActionContext,
-    Actor,
-    Animation,
-    clamp,
-    CollisionType,
-    Delay,
-    Input,
-    range,
-    SpriteSheet,
-    Vector
-} from "excalibur";
-import {Resources} from "../resources.js";
+import {Actor, Animation, clamp, CollisionType, Input, Physics, range, SpriteSheet, Vector} from "excalibur";
+import {ResourceLoader, Resources} from "../resources.js";
 import {Settings} from "../settings.js";
-import {Enemy} from "./enemy.js";
 import {Redbird} from "./redbird.js";
 import {Bluebird} from "./bluebird.js";
 
@@ -67,32 +55,31 @@ export class Player extends Actor {
     }
 
 
-
     onPreUpdate(engine, delta) {
-        if(engine.input.keyboard.wasPressed(Input.Keys.Space)){
-            if (!this.disableJump) {
+        if (!this.disableJump) {
+            if (engine.input.keyboard.wasPressed(Input.Keys.Space)) {
                 this.body.useGravity = true
                 this.jump()
             }
+            this.pos.x = clamp(this.pos.x, this.width / 2, engine.drawWidth - this.width / 2);
+            this.pos.y = clamp(this.pos.y, this.height / 2, engine.drawHeight - this.height / 2);
         }
-
-        this.pos.x = clamp(this.pos.x, this.width/2, engine.drawWidth - this.width/2);
-        this.pos.y = clamp(this.pos.y, this.height/2, engine.drawHeight - this.height/2);
     }
 
-    jump(){
+    jump() {
         this.vel = new Vector(0, -1000)
     }
 
-    collisionHandler(event){
-        if (event.other instanceof Redbird || (event.other instanceof Bluebird)){
+    collisionHandler(event) {
+        if (event.other instanceof Redbird || (event.other instanceof Bluebird)) {
             this.graphics.use("hit")
-            console.log("hit")
-            //Delay
-            this.graphics.use('fly')
-            console.log("fly")
-            // this.game.goToScene('gameover')
+            this.disableJump = true
+            Physics.gravity.y = 800
+            setTimeout(this.gameOver, 2000)
         }
+    }
 
+    gameOver = () => {
+        this.game.goToScene('gameover')
     }
 }

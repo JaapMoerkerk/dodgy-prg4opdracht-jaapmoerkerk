@@ -29,7 +29,7 @@ export class Level1 extends Scene {
         this.add(background1)
 
         const player = new Player()
-        player.disableJump = false;
+        player.disableJump = false
         player.graphics.use('fly')
         this.add(player)
 
